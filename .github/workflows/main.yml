@@ -1,0 +1,21 @@
+name: Payload Forming
+on:
+  push:
+    branches: [ deploy ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Client build
+        run: |
+          cd client
+          npm run build
+      
+      - name: Server build
+        run: |
+          cd server
+          npm run build
+
